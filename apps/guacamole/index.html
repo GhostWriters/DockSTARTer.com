@@ -1,0 +1,2040 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DockSTARTer helps you get started with home server apps running in Docker.">
+      
+      
+        <link rel="canonical" href="https://dockstarter.com/apps/guacamole/">
+      
+      
+        <meta name="author" content="GhostWriters">
+      
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+    
+      
+        <title>Guacamole - DockSTARTer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.89dc9fe3.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecd4686e.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guacamole" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://dockstarter.com" title="DockSTARTer" class="md-header-nav__button md-logo" aria-label="DockSTARTer">
+      
+  <img src="../../img/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            DockSTARTer
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Guacamole
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/GhostWriters/DockSTARTer/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GhostWriters/DockSTARTer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://dockstarter.com" title="DockSTARTer" class="md-nav__button md-logo" aria-label="DockSTARTer">
+      
+  <img src="../../img/icon.png" alt="logo">
+
+    </a>
+    DockSTARTer
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/GhostWriters/DockSTARTer/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GhostWriters/DockSTARTer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Basics
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Basics" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Basics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/available-apps/" title="Available Apps" class="md-nav__link">
+      Available Apps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/env-var-info/" title=".env Variable Info" class="md-nav__link">
+      .env Variable Info
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/migration/" title="Migration" class="md-nav__link">
+      Migration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/port-conflicts/" title="Port Conflicts" class="md-nav__link">
+      Port Conflicts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../basics/support/" title="Support" class="md-nav__link">
+      Support
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Advanced
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Advanced
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/advanced-usage/" title="Advanced Usage" class="md-nav__link">
+      Advanced Usage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/backups/" title="Backups" class="md-nav__link">
+      Backups
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/domain-info/" title="Domain Info" class="md-nav__link">
+      Domain Info
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/macvlan/" title="Macvlan Networking" class="md-nav__link">
+      Macvlan Networking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/overrides/" title="Overrides" class="md-nav__link">
+      Overrides
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/smb-mounting/" title="SMB Mounting" class="md-nav__link">
+      SMB Mounting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/technical-info/" title="Technical Info" class="md-nav__link">
+      Technical Info
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/uninstall/" title="Uninstalling" class="md-nav__link">
+      Uninstalling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../advanced/vpn-info/" title="VPN Info" class="md-nav__link">
+      VPN Info
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      App Specifics
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="App Specifics" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        App Specifics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../airdcpp/" title="AirDC++" class="md-nav__link">
+      AirDC++
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../airsonic/" title="Airsonic" class="md-nav__link">
+      Airsonic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bazarr/" title="Bazarr" class="md-nav__link">
+      Bazarr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../beets/" title="Beets" class="md-nav__link">
+      Beets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bitwarden/" title="Bitwarden" class="md-nav__link">
+      Bitwarden
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../booksonic/" title="Booksonic" class="md-nav__link">
+      Booksonic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bookstack/" title="BookStack" class="md-nav__link">
+      BookStack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../calibreweb/" title="Calibre-web" class="md-nav__link">
+      Calibre-web
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cloudcmd/" title="Cloud Commander" class="md-nav__link">
+      Cloud Commander
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cloudflareddns/" title="CloudFlare DDNS" class="md-nav__link">
+      CloudFlare DDNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../codeserver/" title="codeserver" class="md-nav__link">
+      codeserver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../couchpotato/" title="CouchPotato" class="md-nav__link">
+      CouchPotato
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dasshio/" title="dasshio" class="md-nav__link">
+      dasshio
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ddclient/" title="Ddclient" class="md-nav__link">
+      Ddclient
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deemix/" title="deemix" class="md-nav__link">
+      deemix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../deluge/" title="Deluge" class="md-nav__link">
+      Deluge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../delugevpn/" title="DelugeVPN" class="md-nav__link">
+      DelugeVPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../duckdns/" title="DuckDNS" class="md-nav__link">
+      DuckDNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../duplicati/" title="Duplicati" class="md-nav__link">
+      Duplicati
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../emby/" title="Emby" class="md-nav__link">
+      Emby
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../filebot/" title="FileBot" class="md-nav__link">
+      FileBot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../freshrss/" title="FreshRSS" class="md-nav__link">
+      FreshRSS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../glances/" title="Glances" class="md-nav__link">
+      Glances
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../goaccess/" title="GoAccess" class="md-nav__link">
+      GoAccess
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grafana/" title="Grafana" class="md-nav__link">
+      Grafana
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grocy/" title="grocy" class="md-nav__link">
+      grocy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Guacamole
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Guacamole" class="md-nav__link md-nav__link--active">
+      Guacamole
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-guacamole" class="md-nav__link">
+    Configuring Guacamole
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-f2b" class="md-nav__link">
+    Configuring F2B
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../h5ai/" title="h5ai" class="md-nav__link">
+      h5ai
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../handbrake/" title="HandBrake" class="md-nav__link">
+      HandBrake
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../headphones/" title="Headphones" class="md-nav__link">
+      Headphones
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../heimdall/" title="Heimdall" class="md-nav__link">
+      Heimdall
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../homeassistant/" title="Home Assistant" class="md-nav__link">
+      Home Assistant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../htpcmanager/" title="HTPC Manager" class="md-nav__link">
+      HTPC Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hydra2/" title="Hydra2" class="md-nav__link">
+      Hydra2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../influxdb/" title="InfluxDB" class="md-nav__link">
+      InfluxDB
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../jackett/" title="Jackett" class="md-nav__link">
+      Jackett
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../jellyfin/" title="Jellyfin" class="md-nav__link">
+      Jellyfin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lazylibrarian/" title="Lazylibrarian" class="md-nav__link">
+      Lazylibrarian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../letsencrypt/" title="Let's Encrypt" class="md-nav__link">
+      Let's Encrypt
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../librespeed/" title="librespeed" class="md-nav__link">
+      librespeed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lidarr/" title="Lidarr" class="md-nav__link">
+      Lidarr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../limnoria/" title="limnoria" class="md-nav__link">
+      limnoria
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../logarr/" title="Logarr" class="md-nav__link">
+      Logarr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../logitechmediaserver/" title="Logitech Media Server" class="md-nav__link">
+      Logitech Media Server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../makemkv/" title="MakeMKV" class="md-nav__link">
+      MakeMKV
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mariadb/" title="MariaDB" class="md-nav__link">
+      MariaDB
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mcmyadmin2/" title="McMyAdmin" class="md-nav__link">
+      McMyAdmin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../medusa/" title="Medusa" class="md-nav__link">
+      Medusa
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../minecraft_bedrock_server/" title="minecraft_bedrock_server" class="md-nav__link">
+      minecraft_bedrock_server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../minecraft_server/" title="minecraft_server" class="md-nav__link">
+      minecraft_server
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../monitorr/" title="Monitorr" class="md-nav__link">
+      Monitorr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../muximux/" title="Muximux" class="md-nav__link">
+      Muximux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mylar/" title="Mylar" class="md-nav__link">
+      Mylar
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../netdata/" title="netdata" class="md-nav__link">
+      netdata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nextcloud/" title="NextCloud" class="md-nav__link">
+      NextCloud
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nzbget/" title="NZBGet" class="md-nav__link">
+      NZBGet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nzbgetvpn/" title="NZBGetVPN" class="md-nav__link">
+      NZBGetVPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nzbhydra2/" title="Nzbhydra2" class="md-nav__link">
+      Nzbhydra2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ombi/" title="Ombi" class="md-nav__link">
+      Ombi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../openvpnas/" title="OpenVPNAS" class="md-nav__link">
+      OpenVPNAS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../organizr/" title="Organizr" class="md-nav__link">
+      Organizr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ouroboros/" title="Ouroboros" class="md-nav__link">
+      Ouroboros
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../phpmyadmin/" title="phpMyAdmin" class="md-nav__link">
+      phpMyAdmin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pihole/" title="PiHole" class="md-nav__link">
+      PiHole
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../piwigo/" title="piwigo" class="md-nav__link">
+      piwigo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../plex/" title="Plex" class="md-nav__link">
+      Plex
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../plexrequests/" title="Plex Requests" class="md-nav__link">
+      Plex Requests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../portainer/" title="Portainer" class="md-nav__link">
+      Portainer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../portaineragent/" title="Portainer Agent" class="md-nav__link">
+      Portainer Agent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyload/" title="PyLoad" class="md-nav__link">
+      PyLoad
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../qbittorrent/" title="qBittorrent" class="md-nav__link">
+      qBittorrent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../qbittorrentvpn/" title="qBittorrentVPN" class="md-nav__link">
+      qBittorrentVPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../quasselcore/" title="QuasselCore" class="md-nav__link">
+      QuasselCore
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../quasselweb/" title="QuasselWeb" class="md-nav__link">
+      QuasselWeb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../radarr/" title="Radarr" class="md-nav__link">
+      Radarr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../resiliosync/" title="ResilioSync" class="md-nav__link">
+      ResilioSync
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rtorrentvpn/" title="rTorrentVPN" class="md-nav__link">
+      rTorrentVPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rutorrent/" title="ruTorrent" class="md-nav__link">
+      ruTorrent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sabnzbd/" title="SABnzbd" class="md-nav__link">
+      SABnzbd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sabnzbdvpn/" title="SABnzbdVPN" class="md-nav__link">
+      SABnzbdVPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../samba/" title="Samba" class="md-nav__link">
+      Samba
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sickchill/" title="SickChill" class="md-nav__link">
+      SickChill
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sickrage/" title="SickRage" class="md-nav__link">
+      SickRage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../smokeping/" title="Smokeping" class="md-nav__link">
+      Smokeping
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sonarr/" title="Sonarr" class="md-nav__link">
+      Sonarr
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../synclounge/" title="SyncLounge" class="md-nav__link">
+      SyncLounge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../syncthing/" title="Syncthing" class="md-nav__link">
+      Syncthing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tautulli/" title="Tautulli" class="md-nav__link">
+      Tautulli
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../telegraf/" title="Telegraf" class="md-nav__link">
+      Telegraf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../thelounge/" title="TheLounge" class="md-nav__link">
+      TheLounge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../transmission/" title="Transmission" class="md-nav__link">
+      Transmission
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../transmissionvpn/" title="TransmissionVPN" class="md-nav__link">
+      TransmissionVPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ttrss/" title="TTRSS" class="md-nav__link">
+      TTRSS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tvheadend/" title="tvheadend" class="md-nav__link">
+      tvheadend
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ubooquity/" title="Ubooquity" class="md-nav__link">
+      Ubooquity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../unifi/" title="Unifi" class="md-nav__link">
+      Unifi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../unificontroller/" title="Unifi Controller" class="md-nav__link">
+      Unifi Controller
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../unmanic/" title="unmanic" class="md-nav__link">
+      unmanic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../varken/" title="Varken" class="md-nav__link">
+      Varken
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vsftpd/" title="vsftpd" class="md-nav__link">
+      vsftpd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../watchtower/" title="Watchtower" class="md-nav__link">
+      Watchtower
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../znc/" title="znc" class="md-nav__link">
+      znc
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Overrides
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Overrides" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Overrides
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overrides/introduction/" title="Overrides Intro" class="md-nav__link">
+      Overrides Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overrides/nginxproxymanager/" title="Nginx Proxy Manager" class="md-nav__link">
+      Nginx Proxy Manager
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-guacamole" class="md-nav__link">
+    Configuring Guacamole
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-f2b" class="md-nav__link">
+    Configuring F2B
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/GhostWriters/DockSTARTer.com/edit/master/docs/apps/guacamole.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="guacamole">Guacamole</h1>
+<p>Guacamole is a Docker Container for <a href="https://guacamole.apache.org/">Apache Guacamole</a>, a client-less remote desktop gateway. It supports standard protocols like VNC, RDP, and SSH over HTML5.</p>
+<p>The GIT Repository for Guacamole is located at <a href="https://github.com/oznu/docker-guacamole">https://github.com/oznu/docker-guacamole</a>.</p>
+<h2 id="configuring-guacamole">Configuring Guacamole</h2>
+<p>This guide will help you replicate Gilbn's tutorial to protect your Guacamole install with F2B</p>
+<p>Since DockSTARTer uses Oznu's image for Guacamole, it only generates logs inside the container itself. Following these steps will allow you to get the Guacamole container to generate a log file in <code>~/.config/appdata/guacamole</code> which you can then mount to the LetsEncrypt container so F2B can monitor it and ban malicious IPs.</p>
+<p>You can find Gilbn's tutorial <a href="https://technicalramblings.com/blog/remotely-accessing-the-unraid-gui-with-guacamole-and-vnc-web-browser/">here</a>. We recommend you read it over so you get a basic understanding of what you will be doing:</p>
+<ol>
+<li>Create a <code>logback.xml</code> file inside <code>~/.config/appdata/guacamole/guacamole</code><ul>
+<li><code>touch ~/.config/appdata/guacamole/guacamole/logback.xml</code>
+      or</li>
+<li><code>sudo nano ~/.config/appdata/guacamole/guacamole/logback.xml</code></li>
+</ul>
+</li>
+<li>
+<p>Open the file with your favorite editor and place the following contents inside of it:</p>
+<p><strong>NOTE: Make sure to make changes to the timezone accordingly. Check the <code>php-local.ini</code> file in <code>~/.config/appdata/letsencrypt/php</code> if you are not sure what your timezone is.</strong></p>
+</li>
+</ol>
+<pre><code class="xml">&lt;configuration&gt;
+    &lt;!-- Appender for debugging --&gt;
+    &lt;appender name=&quot;GUAC-DEBUG&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;%d{HH:mm:ss.SSS, America/New_York} [%thread] %-5level %logger{36} - %msg%n&lt;/pattern&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+    &lt;!-- Appender for debugging in a file--&gt;
+    &lt;appender name=&quot;GUAC-DEBUG_FILE&quot; class=&quot;ch.qos.logback.core.FileAppender&quot;&gt;
+        &lt;file&gt;/config/logs/guacd.log&lt;/file&gt;
+        &lt;encoder&gt;
+            &lt;pattern&gt;%d{HH:mm:ss.SSS, America/New_York} [%thread] %-5level %logger{36} - %msg%n&lt;/pattern&gt;
+        &lt;/encoder&gt;
+    &lt;/appender&gt;
+    &lt;!-- Log at DEBUG level --&gt;
+    &lt;root level=&quot;debug&quot;&gt;
+        &lt;appender-ref ref=&quot;GUAC-DEBUG&quot;/&gt;
+        &lt;appender-ref ref=&quot;GUAC-DEBUG_FILE&quot;/&gt;
+    &lt;/root&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<ol>
+<li>Restart the Guacamole container so it creates <code>guacd.log</code> in <code>~/.config/appdata/guacamole/logs/</code></li>
+<li>Modify your docker-compose.override.yml in <code>~/.docker/compose/docker-compose.override.yml</code> file to mount the new log to letsencrypt</li>
+</ol>
+<p>Example:</p>
+<pre><code class="yaml">  letsencrypt:
+    volumes:
+      - ${DOCKERCONFDIR}/guacamole/logs/:/var/log/guacamole/
+</code></pre>
+
+<p>**NOTE: From here on out, we will be using <code>/var/log/guacamole</code> to refer to where the guacd.log lives within letsencrypt. This is just an example, you can mount your log file wherever you want inside the letsencrypt container.</p>
+<ol>
+<li>Recreate your container by running <code>ds -c up</code></li>
+<li>Perform an invalid login attempt on Guacamole</li>
+<li>Check the new guacd.log file located in <code>~/.config/appdata/guacamole/logs</code> to verify the failed login attempt</li>
+</ol>
+<p>Example:</p>
+<pre><code class="bash">grep -i nzbget ~/.config/appdata/guacamole/logs/guacd.log | grep failed
+15:03:17.762 [http-nio-8080-exec-1] WARN  o.a.g.r.auth.AuthenticationService - Authentication attempt from [x.x.x.x, x.x.x.x, x.x.x.x]
+for user &quot;nzbget&quot; failed.
+</code></pre>
+
+<h2 id="configuring-f2b">Configuring F2B</h2>
+<ol>
+<li>Navigate to <code>~/.config/appdata/letsencrypt/fail2ban</code>, in there you will see (2) folders <code>action.d</code> and <code>filter.d</code>, as well as other files, we are going to focus on the file called <code>jail.local</code> for now.</li>
+<li>Go ahead and open <code>jail.local</code> with your favorite editor as root and copy/paste the following:</li>
+</ol>
+<pre><code class="ini">[guacamole-auth]
+
+enabled = true
+port = http,https
+filter = guacamole-auth
+logpath = /var/log/guacamole/guacd.log
+ignoreip = 192.168.1.0/24
+</code></pre>
+
+<p>**NOTE: The ignore IP is so that fail2ban won’t ban your local IP. Check out <a href="https://www.aelius.com/njh/subnet_sheet.html">https://www.aelius.com/njh/subnet_sheet.html</a> if you are wondering what your CIDR notation is. Most often it will be /24 (netmask 255.255.255.0)
+To find your netmask run <code>ipconfig /all</code> on windows or <code>ifconfig | grep netmask</code> on linux.</p>
+<ol>
+<li>Next we are going to navigate to <code>~/.config/appdata/letsencrypt/fail2ban/filter.d</code> and in there you will see a file called <code>guacamole.conf</code>. We can't use this file because the regex in there will not work for our purposes.</li>
+<li>Open <code>guacamole.conf</code> with your favorite text editor as root and modify the regex line called <code>failregex</code> to match this: <code>\bAuthentication attempt from (?:\[)?&lt;HOST&gt;(?:,.*)?(?:\])? for user "[^"]*" failed\.$</code></li>
+<li>Next save the file and name it <code>guacamole-auth.conf</code></li>
+<li>Perform an invalid login attempt and check fail2ban's regex for Guacamole with the following command: <code>docker exec -it letsencrypt fail2ban-regex /var/log/guacamole/guacd.log /config/fail2ban/filter.d/guacamole-auth.conf</code></li>
+<li>If you want to ban yourself, you can comment out the <code>ignoreip</code> line on <code>jail.local</code>.</li>
+</ol>
+<p>BONUS: Want to see notifications when someone gets the hammer? Check out this cool <a href="https://technicalramblings.com/blog/adding-ban-unban-notifications-from-fail2ban-to-discord/">Discord guide</a> or this <a href="https://technicalramblings.com/blog/adding-ban-unban-notifications-from-fail2ban-with-pushover/">Pushover guide</a></p>
+<p>Credits @halianelf, @christronyxyocum, @gilbN and @iXNyNe</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../grocy/" title="grocy" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                grocy
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../h5ai/" title="h5ai" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                h5ai
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 GhostWriters
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
